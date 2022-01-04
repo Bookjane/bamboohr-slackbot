@@ -1,2 +1,6 @@
 # bamboohr-slackbot
-Slackbot for querying 
+Slackbot for querying data from bamboohr:
+
+* Birthdays
+* Work Anniversaries
+* Who is Out
