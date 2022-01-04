@@ -1,0 +1,59 @@
+_metadata:
+  major_version: 1
+  minor_version: 1
+display_information:
+  name: BambooBot
+  description: BambooHR Slack Bot
+  background_color: "#1c0f51"
+features:
+  bot_user:
+    display_name: BambooBot
+    always_online: true
+  slash_commands:
+    - command: /whos-out-range
+      url: <TODO>/slack/events
+      description: Specify date range to query for who is out in this channel.
+      should_escape: false
+    - command: /birthday-range
+      url: <TODO>/slack/events
+      description: Specify date range to query for birthdays of people in this channel.
+      should_escape: false
+    - command: /anniversary-range
+      url: <TODO>/slack/events
+      description: Specify date range to query for work anniversaries of people in this channel.
+      should_escape: false
+oauth_config:
+  scopes:
+    bot:
+      - app_mentions:read
+      - channels:history
+      - channels:read
+      - groups:write
+      - chat:write
+      - chat:write.public
+      - commands
+      - groups:history
+      - groups:read
+      - im:history
+      - im:read
+      - incoming-webhook
+      - mpim:read
+      - users.profile:read
+      - users:read
+      - users:read.email
+      - channels:join
+settings:
+  event_subscriptions:
+    request_url: <TODO>/slack/events
+    bot_events:
+      - app_home_opened
+      - app_mention
+      - message.channels
+      - message.groups
+      - message.im
+  interactivity:
+    is_enabled: true
+    request_url: <TODO>/slack/actions
+  org_deploy_enabled: false
+  socket_mode_enabled: false
+  token_rotation_enabled: false
