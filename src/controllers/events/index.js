@@ -7,8 +7,7 @@ module.exports = function eventsResolver(req, res) {
   if (req.body.command) {
     const { trigger_id, command, channel_id, user_id } = req.body;
     if (slashCommandsResolver(command, trigger_id, channel_id, user_id))
-      console.log(200);
-      // res.sendStatus(200);
+      res.send('');
     else
       res.sendStatus(404);
 
@@ -23,7 +22,7 @@ module.exports = function eventsResolver(req, res) {
         break;
       }
 
-      res.sendStatus(200);
+      res.send('');
 
       const { type, user, text, ts, channel } = req.body.event;
       eventTypeResolver(type, text, ts, channel, user);
