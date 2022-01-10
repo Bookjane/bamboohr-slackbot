@@ -7,7 +7,8 @@ module.exports = function eventsResolver(req, res) {
   if (req.body.command) {
     const { trigger_id, command, channel_id, user_id } = req.body;
     if (slashCommandsResolver(command, trigger_id, channel_id, user_id))
-      res.sendStatus(200);
+      console.log(200);
+      // res.sendStatus(200);
     else
       res.sendStatus(404);
 
