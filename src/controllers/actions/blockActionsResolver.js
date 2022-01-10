@@ -113,12 +113,12 @@ module.exports = async function blockActionsResolver(
       }
       default: {
         console.error('Unknown blockId for submit action: ' + actionId);
-        blocks = errorMessageBamboohr('matt');
+        blocks = errorMessageBamboohr();
       }
       }
     } catch (e) {
       console.error(e);
-      blocks = errorMessageBamboohr('U02EY4XD3HB');
+      blocks = errorMessageBamboohr();
     }
 
     if (results.length) {

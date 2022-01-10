@@ -15,19 +15,22 @@ module.exports = function eventsResolver(req, res) {
     switch (req.body.type) {
     case 'url_verification':
       res.send({ challenge: req.body.challenge });
-      return;
-    case 'event_callback': 
+      break;
+    case 'event_callback': {
       if (!verifySignature(req)) {
         res.sendStatus(401);
-        return;
+        break;
       }
 
-      const { type, user, channel, tab, text, subtype } = req.body.event;
-      eventTypeResolver(type);
-      return;
+      res.sendStatus(200);
+
+      const { type, user, text, ts, channel } = req.body.event;
+      eventTypeResolver(type, text, ts, channel, user);
+      break;
+    }
     default:
       res.send(404);
-      return;
+      break;
     }
   }
 };

@@ -20,36 +20,24 @@ const axiosInstance = axios.create({
 });
 
 async function getEmployeeDirectory() {
-  try {
-    return await axiosInstance.get('/v1/employees/directory');
-  } catch (e) {
-    console.error(e);
-  }
+  return await axiosInstance.get('/v1/employees/directory');
 }
 
 async function getEmployeeByBambooHRId(bambooHRId) {
-  try {
-    return await axiosInstance.get(`/v1/employees/${bambooHRId}/`, {
-      params: {
-        fields: EMPLOYEE_FIELDS.join()
-      }
-    });
-  } catch (e) {
-    console.error(e);
-  }
+  return await axiosInstance.get(`/v1/employees/${bambooHRId}/`, {
+    params: {
+      fields: EMPLOYEE_FIELDS.join()
+    }
+  });
 }
 
 async function getWhosOutByDateRange(start, end) {
-  try {
-    return await axiosInstance.get('/v1/time_off/whos_out', {
-      params: {
-        start,
-        end,
-      },
-    });
-  } catch (e) {
-    console.error(e);
-  }
+  return await axiosInstance.get('/v1/time_off/whos_out', {
+    params: {
+      start,
+      end,
+    },
+  });
 }
 
 module.exports = {

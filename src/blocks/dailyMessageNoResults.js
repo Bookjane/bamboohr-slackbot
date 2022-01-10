@@ -1,7 +1,6 @@
 const dayjs = require('../utils/dayjs');
 
 function dailyMessageNoResults(channelName) {
-  console.log(channelName);
   return [
     {
       'type': 'header',

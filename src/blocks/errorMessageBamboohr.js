@@ -1,4 +1,6 @@
-function errorMessageBamboohr(slackId) {
+const { SLACK_USER_ID_ERROR_CONTACT } = require('../config');
+
+function errorMessageBamboohr() {
   return [
     {
       'type': 'section',
@@ -11,7 +13,7 @@ function errorMessageBamboohr(slackId) {
       'type': 'section',
       'text': {
         'type': 'mrkdwn',
-        'text': `Send a message to <@${slackId}> and they will take a look at the issue.`
+        'text': `Send a message to <@${SLACK_USER_ID_ERROR_CONTACT}> and they will take a look at the issue.`
       }
     },
     {

@@ -1,21 +1,35 @@
 {
-  "name": "bamboohr-bot",
+  "name": "bamboohr-slackbot",
   "version": "1.0.0",
-  "description": "",
+  "author": {
+    "name": "Matthew Jay Wong",
+    "email": "matthew.jay.wong@gmail.com",
+    "url": "https://matthew-jay-wong.github.io"
+  },
+  "homepage": "https://github.com/matthew-jay-wong/bamboohr-slackbot#readme",
+  "description": "Slackbot for querying information from BambooHR regarding the members of whatever channel this Slackbot is installed in.",
+  "bugs": {
+    "url" : "https://github.com/matthew-jay-wong/bamboohr-slackbot/issues",
+    "email" : "matthew.jay.wong@gmail.com"
+  },
+  "main": "./index.js",
   "scripts": {
-    "start": "nodemon ./index.js"
+    "start": "node ./index.js",
+    "start:watch": "nodemon ./index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/matthew-jay-wong/bamboohr-slackbot.git"
   },
   "keywords": [],
-  "author": "",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.24.0",
     "body-parser": "^1.19.1",
-    "chalk": "^5.0.0",
+    "chrono-node": "^2.3.5",
     "dayjs": "^1.10.7",
     "dotenv": "^10.0.0",
     "express": "^4.17.2",
-    "lodash": "^4.17.21",
     "node-schedule": "^2.1.0",
     "qs": "^6.10.2",
     "tsscmp": "^1.0.6"

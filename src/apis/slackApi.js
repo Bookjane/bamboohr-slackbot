@@ -26,6 +26,17 @@ function sendMessage(notificationText, blocks, channel) {
   );
 }
 
+function replyToMessage(notificationText, channel, thread_ts, blocks) {
+  const args = {
+    text: notificationText,
+    channel,
+    thread_ts,
+    blocks: JSON.stringify(blocks)
+  };
+
+  axiosInstance.post('/chat.postMessage', qs.stringify(args));
+}
+
 function sendEphemeralMessage(trigger_id, blocks, channel, user) {
   const args = {
     trigger_id: trigger_id,
@@ -75,61 +86,50 @@ async function getChannelMembers(channel) {
 }
 
 async function getUserInfo(user) {
-  try {
-    const res = await axiosInstance.get(
-      '/users.info',
-      {
-        params: {
-          user
-        }
+  const res = await axiosInstance.get(
+    '/users.info',
+    {
+      params: {
+        user
       }
-    );
+    }
+  );
 
-    return res;
-  } catch (e) {
-    console.error('Error: getting user by slackId: ' + user, e);
-  }
+  return res;
 }
 
 async function getMessage(channel, latest) {
-  try {
-    const res = await axiosInstance.get(
-      '/conversations.history',
-      {
-        params: {
-          channel,
-          latest,
-          inclusive: true,
-          limit: 1,
-        }
+  const res = await axiosInstance.get(
+    '/conversations.history',
+    {
+      params: {
+        channel,
+        latest,
+        inclusive: true,
+        limit: 1,
       }
-    );
+    }
+  );
 
-    return res;
-  } catch (e) {
-    console.error('Error: getting message: ' + latest + ' from channel: ' + channel, e);
-  }
+  return res;
 }
 
 async function getConversations() {
-  try {
-    const res = await axiosInstance.get(
-      '/users.conversations',
-      {
-        params: {
-          types: 'public_channel,private_channel,mpim,im'
-        }
+  const res = await axiosInstance.get(
+    '/users.conversations',
+    {
+      params: {
+        types: 'public_channel,private_channel,mpim,im'
       }
-    );
+    }
+  );
 
-    return res;
-  } catch (e) {
-    console.error(e);
-  }
+  return res;
 }
 
 module.exports = {
   sendMessage,
+  replyToMessage,
   sendEphemeralMessage,
   replaceEphemeralMessage,
   deleteEphemeralMessage,
