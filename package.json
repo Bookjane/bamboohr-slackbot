@@ -9,8 +9,8 @@
   "homepage": "https://github.com/matthew-jay-wong/bamboohr-slackbot#readme",
   "description": "Slackbot for querying information from BambooHR regarding the members of whatever channel this Slackbot is installed in.",
   "bugs": {
-    "url" : "https://github.com/matthew-jay-wong/bamboohr-slackbot/issues",
-    "email" : "matthew.jay.wong@gmail.com"
+    "url": "https://github.com/matthew-jay-wong/bamboohr-slackbot/issues",
+    "email": "matthew.jay.wong@gmail.com"
   },
   "main": "./index.js",
   "scripts": {
@@ -30,7 +30,7 @@
     "dayjs": "^1.10.7",
     "dotenv": "^10.0.0",
     "express": "^4.17.2",
-    "node-schedule": "^2.1.0",
+    "node-cron": "^3.0.0",
     "qs": "^6.10.2",
     "tsscmp": "^1.0.6"
   },

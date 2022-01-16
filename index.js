@@ -5,7 +5,7 @@ dotenv.config();
 const app = require('./src/app');
 const slackDailyUpdates = require('./src/scheduledJobs/slackDailyUpdate');
 
-const schedule = require('node-schedule');
+const schedule = require('node-cron');
 
 const { PORT } = require('./src/config');
 const environment = require('./src/config');
@@ -24,5 +24,7 @@ const server = app.listen(PORT, () => {
     app.settings.env
   );
 
-  schedule.scheduleJob('0 9 * * *', slackDailyUpdates);
+  schedule.schedule('10 15 * * 0-6', slackDailyUpdates, {
+    timezone: 'America/Toronto'
+  });
 });

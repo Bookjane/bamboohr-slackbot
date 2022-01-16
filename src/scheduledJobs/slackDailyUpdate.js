@@ -10,15 +10,23 @@ async function slackDailyUpdates() {
   const channelIdList = conversationsList.data.channels.map((channel) => ({ channelId: channel.id, channelName: channel.name }));
 
   channelIdList.forEach(async ({ channelId, channelName }) => {
+    console.log(channelId, channelName);
     if (!channelName) return;
 
     const today = dayjs().format('YYYY-MM-DD');
+    let [whosOut, birthdays, workAnniversaries] = [{}, {}, {}];
 
-    const [whosOut, birthdays, workAnniversaries] = await Promise.all([
-      getWhosOutByChannelIdAndDateRange(channelId, today, today),
-      getBirthdaysByChannelIdAndDateRange(channelId, today, today),
-      getAnniversariesByChannelIdAndDateRange(channelId, today, today)
-    ]);
+    try {
+      [whosOut, birthdays, workAnniversaries] = await Promise.all([
+        getWhosOutByChannelIdAndDateRange(channelId, today, today),
+        getBirthdaysByChannelIdAndDateRange(channelId, today, today),
+        getAnniversariesByChannelIdAndDateRange(channelId, today, today)
+      ]);
+    } catch (e) {
+      console.log(e.data);
+    }
+
+    console.log(whosOut, birthdays, workAnniversaries);
 
     let blocks;
     if (Object.keys(whosOut).length || Object.keys(birthdays).length || Object.keys(workAnniversaries).length) {
@@ -31,7 +39,13 @@ async function slackDailyUpdates() {
       blocks = dailyMessageNoResults(channelName);
     }
 
-    sendMessage(`🌅 Good Morning ${dayjs().format('MMMM D, YYYY')}`, blocks, channelId);
+    console.log(blocks);
+
+    try {
+      await sendMessage(`🌅 Good Morning ${dayjs().format('MMMM D, YYYY')}`, blocks, channelId);
+    } catch (e) {
+      console.log(e);
+    }
   });
 }
 
