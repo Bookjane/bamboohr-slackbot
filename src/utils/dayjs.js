@@ -8,6 +8,5 @@ const isBetween = require('dayjs/plugin/isBetween');
 dayjs.extend(utc);
 dayjs.extend(timezone);
 dayjs.extend(isBetween);
-dayjs.tz.guess();
 
 module.exports = dayjs;

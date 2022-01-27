@@ -14,8 +14,8 @@ function dailyMessageNoResults(channelName) {
       'elements': [
         {
           'text': channelName
-            ? `*${dayjs().format('MMMM D, YYYY')}* | ${channelName}`
-            : `*${dayjs().format('MMMM D, YYYY')}*`,
+            ? `*${dayjs().tz('America/Toronto').format('MMMM D, YYYY')}* | ${channelName}`
+            : `*${dayjs().tz('America/Toronto').format('MMMM D, YYYY')}*`,
           'type': 'mrkdwn'
         }
       ]

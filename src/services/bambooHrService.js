@@ -67,7 +67,7 @@ async function getBirthdaysByWorkEmailList(
     const [month, date] = birthday.split('-');
 
     // dayjs: months are zero indexed so offset by one
-    return !!birthday && dayjs().month(Number.parseInt(month) - 1).date(Number.parseInt(date)).isBetween(startDate, endDate, 'day', '[]')
+    return !!birthday && dayjs().tz('America/Toronto').month(Number.parseInt(month) - 1).date(Number.parseInt(date)).isBetween(startDate, endDate, 'day', '[]')
       ? { ...accum, [workEmail]: birthday }
       : accum;
   }, {});
@@ -100,7 +100,7 @@ async function getAnniversariesByWorkEmailList(
     const [, month, date] = hireDate.split('-');
 
     // dayjs: months are zero indexed so offset by one
-    return !!hireDate && dayjs().month(Number.parseInt(month) - 1).date(Number.parseInt(date)).isBetween(startDate, endDate, 'day', '[]')
+    return !!hireDate && dayjs().tz('America/Toronto').month(Number.parseInt(month) - 1).date(Number.parseInt(date)).isBetween(startDate, endDate, 'day', '[]')
       ? { ...accum, [workEmail]: hireDate }
       : accum;
   }, {});

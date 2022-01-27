@@ -5,8 +5,8 @@ const slackApi = require('../../apis/slackApi');
 module.exports = function slashCommandsResolver(
   command, trigger_id, channel_id, user_id
 ) {
-  const currentDate = dayjs().subtract(1, 'day').format('YYYY-MM-DD');
-  const twoWeeksFromNow = dayjs().add(2, 'week').format('YYYY-MM-DD');
+  const currentDate = dayjs().tz('America/Toronto').subtract(1, 'day').format('YYYY-MM-DD');
+  const twoWeeksFromNow = dayjs().tz('America/Toronto').add(2, 'week').format('YYYY-MM-DD');
 
   switch (command) {
   case '/birthday-range': {
