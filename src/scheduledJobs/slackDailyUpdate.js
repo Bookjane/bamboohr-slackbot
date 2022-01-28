@@ -14,13 +14,15 @@ async function slackDailyUpdates() {
     if (!channelName) return;
 
     const today = dayjs().tz('America/Toronto').format('YYYY-MM-DD');
+    const tomorrow = dayjs().tz('America/Toronto').add(1, 'day').format('YYYY-MM-DD');
+    console.log(today);
     let [whosOut, birthdays, workAnniversaries] = [{}, {}, {}];
 
     try {
       [whosOut, birthdays, workAnniversaries] = await Promise.all([
-        getWhosOutByChannelIdAndDateRange(channelId, today, today),
-        getBirthdaysByChannelIdAndDateRange(channelId, today, today),
-        getAnniversariesByChannelIdAndDateRange(channelId, today, today)
+        getWhosOutByChannelIdAndDateRange(channelId, today, tomorrow),
+        getBirthdaysByChannelIdAndDateRange(channelId, today, tomorrow),
+        getAnniversariesByChannelIdAndDateRange(channelId, today, tomorrow)
       ]);
     } catch (e) {
       console.log(e.data);
@@ -38,8 +40,6 @@ async function slackDailyUpdates() {
     } else {
       blocks = dailyMessageNoResults(channelName);
     }
-
-    console.log(blocks);
 
     try {
       await sendMessage(`🌅 Good Morning ${dayjs().format('MMMM D, YYYY')}`, blocks, channelId);

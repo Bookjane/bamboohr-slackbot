@@ -24,7 +24,7 @@ const server = app.listen(PORT, () => {
     app.settings.env
   );
 
-  schedule.schedule('00 09 * * 1-5', slackDailyUpdates, {
+  schedule.schedule('0 30 9 ? * MON-FRI *', slackDailyUpdates, {
     timezone: 'America/Toronto'
   });
 });
