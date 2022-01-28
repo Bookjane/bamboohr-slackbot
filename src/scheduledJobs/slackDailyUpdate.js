@@ -41,11 +41,11 @@ async function slackDailyUpdates() {
 
     console.log(blocks);
 
-    // try {
-    //   await sendMessage(`🌅 Good Morning ${dayjs().format('MMMM D, YYYY')}`, blocks, channelId);
-    // } catch (e) {
-    //   console.log(e);
-    // }
+    try {
+      await sendMessage(`🌅 Good Morning ${dayjs().format('MMMM D, YYYY')}`, blocks, channelId);
+    } catch (e) {
+      console.log(e);
+    }
   });
 }
 
