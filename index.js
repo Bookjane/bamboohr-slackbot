@@ -24,7 +24,7 @@ const server = app.listen(PORT, () => {
     app.settings.env
   );
 
-  schedule.schedule('15 11 * * 1-5', slackDailyUpdates, {
+  schedule.schedule('0 12 * * 1-5', slackDailyUpdates, {
     timezone: 'America/New_York'
   });
 });
