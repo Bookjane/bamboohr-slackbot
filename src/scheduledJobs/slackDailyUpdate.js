@@ -13,7 +13,8 @@ async function slackDailyUpdates() {
     console.log(channelId, channelName);
     if (!channelName) return;
 
-    const today = dayjs().tz('America/New_York').format('YYYY-MM-DD');
+    let today = new Date();
+    today = today.toISOString().split('T')[0];
     console.log(today);
     let [whosOut, birthdays, workAnniversaries] = [{}, {}, {}];
 
