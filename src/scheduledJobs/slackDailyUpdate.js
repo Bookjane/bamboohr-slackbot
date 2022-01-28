@@ -39,11 +39,13 @@ async function slackDailyUpdates() {
       blocks = dailyMessageNoResults(channelName);
     }
 
-    try {
-      await sendMessage(`🌅 Good Morning ${dayjs().format('MMMM D, YYYY')}`, blocks, channelId);
-    } catch (e) {
-      console.log(e);
-    }
+    console.log(blocks);
+
+    // try {
+    //   await sendMessage(`🌅 Good Morning ${dayjs().format('MMMM D, YYYY')}`, blocks, channelId);
+    // } catch (e) {
+    //   console.log(e);
+    // }
   });
 }
 
