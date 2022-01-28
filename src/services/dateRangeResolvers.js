@@ -11,7 +11,9 @@ async function getWhosOutByChannelIdAndDateRange(
   endDate
 ) {
   const chatMembersEmail = await getChatMembersEmail(channelId);
+  console.log(chatMembersEmail);
   const whosOutMap = await getWhosOutByWorkEmailList(Object.keys(chatMembersEmail), startDate, endDate);
+  console.log(whosOutMap);
 
   return Object.keys(whosOutMap).reduce((accum, curr) => ({
     ...accum,
@@ -25,7 +27,9 @@ async function getBirthdaysByChannelIdAndDateRange(
   endDate
 ) {
   const chatMembersEmail = await getChatMembersEmail(channelId);
+  console.log(chatMembersEmail);
   const birthdaysMap = await getBirthdaysByWorkEmailList(Object.keys(chatMembersEmail), startDate, endDate);
+  console.log(birthdaysMap);
 
   return Object.keys(birthdaysMap).reduce((accum, curr) => ({
     ...accum,
@@ -39,7 +43,9 @@ async function getAnniversariesByChannelIdAndDateRange(
   endDate
 ) {
   const chatMembersEmail = await getChatMembersEmail(channelId);
+  console.log(chatMembersEmail);
   const anniversariesMap = await getAnniversariesByWorkEmailList(Object.keys(chatMembersEmail), startDate, endDate);
+  console.log(anniversariesMap);
 
   return Object.keys(anniversariesMap).reduce((accum, curr) => ({
     ...accum,

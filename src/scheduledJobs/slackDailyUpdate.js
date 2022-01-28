@@ -19,13 +19,11 @@ async function slackDailyUpdates() {
     let [whosOut, birthdays, workAnniversaries] = [{}, {}, {}];
 
     try {
-      [whosOut, birthdays, workAnniversaries] = await Promise.all([
-        getWhosOutByChannelIdAndDateRange(channelId, today, today),
-        getBirthdaysByChannelIdAndDateRange(channelId, today, today),
-        getAnniversariesByChannelIdAndDateRange(channelId, today, today)
-      ]);
+      whosOut = await getWhosOutByChannelIdAndDateRange(channelId, today, today);
+      birthdays = await getBirthdaysByChannelIdAndDateRange(channelId, today, today),
+      workAnniversaries = await getAnniversariesByChannelIdAndDateRange(channelId, today, today);
     } catch (e) {
-      console.log(e.data);
+      console.log(e);
     }
 
     console.log(whosOut, birthdays, workAnniversaries);
