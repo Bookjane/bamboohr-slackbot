@@ -6,10 +6,10 @@
     "email": "matthew.jay.wong@gmail.com",
     "url": "https://matthew-jay-wong.github.io"
   },
-  "homepage": "https://github.com/matthew-jay-wong/bamboohr-slackbot#readme",
+  "homepage": "https://github.com/Bookjane/bamboohr-slackbot#readme",
   "description": "Slackbot for querying information from BambooHR regarding the members of whatever channel this Slackbot is installed in.",
   "bugs": {
-    "url": "https://github.com/matthew-jay-wong/bamboohr-slackbot/issues",
+    "url": "https://github.com/Bookjane/bamboohr-slackbot/issues",
     "email": "matthew.jay.wong@gmail.com"
   },
   "main": "./index.js",
@@ -20,7 +20,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/matthew-jay-wong/bamboohr-slackbot.git"
+    "url": "https://github.com/Bookjane/bamboohr-slackbot"
   },
   "keywords": [],
   "license": "ISC",
