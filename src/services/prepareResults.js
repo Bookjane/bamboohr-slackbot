@@ -5,9 +5,9 @@ function prepareWhosOutResult(whosOut) {
     const outages = whosOut[curr];
     return [
       ...accum,
-      `<@${curr}> \n\t • ${outages.map((outage) => outages.start !== outages.end
-        ? `\`${outage.start}\` to \`${outage.end}\` ${outage.type}`
-        : `\`${outage.end}\` ${outage.type}`).join(' \n\t • ')}`
+      `<@${curr}> \n\t • ${outages.map((outage) => dayjs(outage.start).isSame(outage.end)
+        ? `\`${outage.start}\` ${outage.type}`
+        : `\`${outage.start}\` to \`${outage.end}\` ${outage.type}`).join(' \n\t • ')}`
     ];
   }, []);
 }
