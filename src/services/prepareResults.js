@@ -6,8 +6,8 @@ function prepareWhosOutResult(whosOut) {
     return [
       ...accum,
       `<@${curr}> \n\t • ${outages.map((outage) => dayjs(outage.start).isSame(outage.end)
-        ? `\`${outage.start}\` ${outage.type}`
-        : `\`${outage.start}\` to \`${outage.end}\` ${outage.type}`).join(' \n\t • ')}`
+        ? `\`${outage.start}\``
+        : `\`${outage.start}\` to \`${outage.end}\``).join(' \n\t • ')}`
     ];
   }, []);
 }
