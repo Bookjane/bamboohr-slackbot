@@ -101,12 +101,12 @@ async function getAnniversariesByWorkEmailList(
   
   console.log(Object.keys(channelMembersBamboohrDirectoryMap));
   let channelMembersBamboohrInfo = [];
-  for (const bamboohrId in Object.keys(channelMembersBamboohrDirectoryMap)) {
-    console.log(bamboohrId);
-    // const bamboohrInfo = await bamboohrApi.getEmployeeByBambooHRId(bamboohrId);
-    // console.log(bamboohrInfo.data);
-    // await new Promise(r => setTimeout(r, 1000));
-    // channelMembersBamboohrInfo.push(bamboohrInfo);
+  for (const [key] of Object.entries(channelMembersBamboohrDirectoryMap)) {
+    console.log(key);
+    const bamboohrInfo = await bamboohrApi.getEmployeeByBambooHRId(key);
+    console.log(bamboohrInfo.data);
+    await new Promise(r => setTimeout(r, 1000));
+    channelMembersBamboohrInfo.push(bamboohrInfo);
   }
 
   return channelMembersBamboohrInfo.reduce((accum, curr) => {
