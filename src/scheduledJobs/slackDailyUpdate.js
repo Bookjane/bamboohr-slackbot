@@ -15,13 +15,14 @@ async function slackDailyUpdates() {
 
     let today = new Date();
     today = today.toISOString().split('T')[0];
-    console.log(today);
+    const tomorrow = new Date(today);
+    tomorrow.setDate(tomorrow.getDate() + 1);
     let [whosOut, birthdays, workAnniversaries] = [{}, {}, {}];
 
     try {
       whosOut = await getWhosOutByChannelIdAndDateRange(channelId, today, today);
-      birthdays = await getBirthdaysByChannelIdAndDateRange(channelId, today, today),
-      workAnniversaries = await getAnniversariesByChannelIdAndDateRange(channelId, today, today);
+      birthdays = await getBirthdaysByChannelIdAndDateRange(channelId, today, tomorrow),
+      workAnniversaries = await getAnniversariesByChannelIdAndDateRange(channelId, today, tomorrow);
     } catch (e) {
       console.log(e);
     }
@@ -38,8 +39,6 @@ async function slackDailyUpdates() {
     } else {
       blocks = dailyMessageNoResults(channelName);
     }
-
-    console.log(blocks);
 
     try {
       await sendMessage(`🌅 Good Morning ${dayjs().format('MMMM D, YYYY')}`, blocks, channelId);
