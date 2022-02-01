@@ -99,13 +99,13 @@ async function getAnniversariesByWorkEmailList(
       {}
     );
   
+  console.log(channelMembersBamboohrDirectoryMap);
   let channelMembersBamboohrInfo = [];
-  for (const bamboohrId in Object.keys(channelMembersBamboohrDirectoryMap)) {
-    const bamboohrInfo = await bamboohrApi.getEmployeeByBambooHRId(bamboohrId);
-    console.log(bamboohrInfo);
-    await new Promise(r => setTimeout(r, 1000));
-    channelMembersBamboohrInfo.push(bamboohrInfo);
-  }
+  // for (const bamboohrId in Object.keys(channelMembersBamboohrDirectoryMap)) {
+  //   const bamboohrInfo = await bamboohrApi.getEmployeeByBambooHRId(bamboohrId);
+  //   await new Promise(r => setTimeout(r, 1000));
+  //   channelMembersBamboohrInfo.push(bamboohrInfo);
+  // }
 
   return channelMembersBamboohrInfo.reduce((accum, curr) => {
     const { workEmail, hireDate } = curr.data;
