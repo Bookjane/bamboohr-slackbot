@@ -1,5 +1,6 @@
 const dayjs = require('../utils/dayjs');
 const bamboohrApi = require('../apis/bamboohrApi');
+const slackbotMentionTypeParseErrorMessage = require('../blocks/slackbotMentionTypeParseErrorMessage');
 
 async function getWhosOutByWorkEmailList(
   chatMembersEmail,
@@ -63,6 +64,8 @@ async function getBirthdaysByWorkEmailList(
   let channelMembersBamboohrInfo = [];
   for (const bamboohrId in Object.keys(channelMembersBamboohrDirectoryMap)) {
     const bamboohrInfo = await bamboohrApi.getEmployeeByBambooHRId(bamboohrId);
+    console.log(bamboohrInfo);
+    await new Promise(r => setTimeout(r, 1000));
     channelMembersBamboohrInfo.push(bamboohrInfo);
   }
 
@@ -99,6 +102,8 @@ async function getAnniversariesByWorkEmailList(
   let channelMembersBamboohrInfo = [];
   for (const bamboohrId in Object.keys(channelMembersBamboohrDirectoryMap)) {
     const bamboohrInfo = await bamboohrApi.getEmployeeByBambooHRId(bamboohrId);
+    console.log(bamboohrInfo);
+    await new Promise(r => setTimeout(r, 1000));
     channelMembersBamboohrInfo.push(bamboohrInfo);
   }
 
