@@ -11,7 +11,6 @@ async function getWhosOutByChannelIdAndDateRange(
   endDate
 ) {
   const chatMembersEmail = await getChatMembersEmail(channelId);
-  console.log(chatMembersEmail);
   const whosOutMap = await getWhosOutByWorkEmailList(Object.keys(chatMembersEmail), startDate, endDate);
   console.log(whosOutMap);
 
@@ -27,7 +26,6 @@ async function getBirthdaysByChannelIdAndDateRange(
   endDate
 ) {
   const chatMembersEmail = await getChatMembersEmail(channelId);
-  console.log(chatMembersEmail);
   const birthdaysMap = await getBirthdaysByWorkEmailList(Object.keys(chatMembersEmail), startDate, endDate);
   console.log(birthdaysMap);
 
@@ -43,7 +41,6 @@ async function getAnniversariesByChannelIdAndDateRange(
   endDate
 ) {
   const chatMembersEmail = await getChatMembersEmail(channelId);
-  console.log(chatMembersEmail);
   const anniversariesMap = await getAnniversariesByWorkEmailList(Object.keys(chatMembersEmail), startDate, endDate);
   console.log(anniversariesMap);
 
