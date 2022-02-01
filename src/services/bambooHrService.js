@@ -99,7 +99,7 @@ async function getAnniversariesByWorkEmailList(
       {}
     );
   
-  console.log(channelMembersBamboohrDirectoryMap);
+  console.log(Object.keys(channelMembersBamboohrDirectoryMap));
   let channelMembersBamboohrInfo = [];
   for (const bamboohrId in Object.keys(channelMembersBamboohrDirectoryMap)) {
     console.log(bamboohrId);
