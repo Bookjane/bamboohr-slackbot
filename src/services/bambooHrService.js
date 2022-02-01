@@ -60,7 +60,11 @@ async function getBirthdaysByWorkEmailList(
     );
 
   
-  const channelMembersBamboohrInfo = await Promise.all(Object.keys(channelMembersBamboohrDirectoryMap).map((bamboohrId) => bamboohrApi.getEmployeeByBambooHRId(bamboohrId)));
+  let channelMembersBamboohrInfo = [];
+  for (const bamboohrId in Object.keys(channelMembersBamboohrDirectoryMap)) {
+    const bamboohrInfo = await bamboohrApi.getEmployeeByBambooHRId(bamboohrId);
+    channelMembersBamboohrInfo.push(bamboohrInfo);
+  }
 
   return channelMembersBamboohrInfo.reduce((accum, curr) => {
     const { workEmail, birthday } = curr.data;
@@ -91,9 +95,12 @@ async function getAnniversariesByWorkEmailList(
       }),
       {}
     );
-
   
-  const channelMembersBamboohrInfo = await Promise.all(Object.keys(channelMembersBamboohrDirectoryMap).map((bamboohrId) => bamboohrApi.getEmployeeByBambooHRId(bamboohrId)));
+  let channelMembersBamboohrInfo = [];
+  for (const bamboohrId in Object.keys(channelMembersBamboohrDirectoryMap)) {
+    const bamboohrInfo = await bamboohrApi.getEmployeeByBambooHRId(bamboohrId);
+    channelMembersBamboohrInfo.push(bamboohrInfo);
+  }
 
   return channelMembersBamboohrInfo.reduce((accum, curr) => {
     const { workEmail, hireDate } = curr.data;
