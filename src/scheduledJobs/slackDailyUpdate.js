@@ -20,9 +20,9 @@ async function slackDailyUpdates() {
     let [whosOut, birthdays, workAnniversaries] = [{}, {}, {}];
 
     try {
-      whosOut = await getWhosOutByChannelIdAndDateRange(channelId, yesterday, yesterday);
-      birthdays = await getBirthdaysByChannelIdAndDateRange(channelId, yesterday, yesterday),
-      workAnniversaries = await getAnniversariesByChannelIdAndDateRange(channelId, yesterday, yesterday);
+      whosOut = await getWhosOutByChannelIdAndDateRange(channelId, today, today);
+      birthdays = await getBirthdaysByChannelIdAndDateRange(channelId, today, today),
+      workAnniversaries = await getAnniversariesByChannelIdAndDateRange(channelId, today, today);
     } catch (e) {
       console.log(e);
     }
