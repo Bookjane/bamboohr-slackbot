@@ -42,7 +42,7 @@ async function getAnniversariesByChannelIdAndDateRange(
 ) {
   const chatMembersEmail = await getChatMembersEmail(channelId);
   const anniversariesMap = await getAnniversariesByWorkEmailList(Object.keys(chatMembersEmail), startDate, endDate);
-  console.log(anniversariesMap);
+  console.log('anniversaries', anniversariesMap);
 
   return Object.keys(anniversariesMap).reduce((accum, curr) => ({
     ...accum,
