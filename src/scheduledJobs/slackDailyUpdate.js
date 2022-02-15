@@ -15,36 +15,35 @@ async function slackDailyUpdates() {
 
     const today = dayjs().format('YYYY-MM-DD');
     console.log(today);
-    let [whosOut, birthdays, workAnniversaries] = [{}, {}, {}];
+    // let [whosOut, birthdays, workAnniversaries] = [{}, {}, {}];
+    let whosOut = {};
 
     try {
       whosOut = await getWhosOutByChannelIdAndDateRange(channelId, today, today);
-      birthdays = await getBirthdaysByChannelIdAndDateRange(channelId, today, today),
-      workAnniversaries = await getAnniversariesByChannelIdAndDateRange(channelId, today, today);
+      // birthdays = await getBirthdaysByChannelIdAndDateRange(channelId, today, today),
+      // workAnniversaries = await getAnniversariesByChannelIdAndDateRange(channelId, today, today);
     } catch (e) {
       console.log(e);
     }
 
-    console.log(whosOut, birthdays, workAnniversaries);
+    // console.log(whosOut, birthdays, workAnniversaries);
 
     let blocks;
-    if (Object.keys(whosOut).length || Object.keys(birthdays).length || Object.keys(workAnniversaries).length) {
+    if (Object.keys(whosOut).length) { // || Object.keys(birthdays).length || Object.keys(workAnniversaries).length) {
       const whosOutResult = prepareWhosOutResult(whosOut);
-      const birthdaysResult = prepareBirthdayResults(birthdays, today, today);
-      const workAnniversariesResult = prepareWorkAnniversariesResult(workAnniversaries, today, today);
+      // const birthdaysResult = prepareBirthdayResults(birthdays, today, today);
+      // const workAnniversariesResult = prepareWorkAnniversariesResult(workAnniversaries, today, today);
 
-      blocks = dailyMessage(channelName, birthdaysResult, workAnniversariesResult, whosOutResult);
+      blocks = dailyMessage(channelName, {}, {}, whosOutResult);
     } else {
       blocks = dailyMessageNoResults(channelName);
     }
 
-    console.log(blocks);
-
-    // try {
-    //   await sendMessage(`🌅 Good Morning ${dayjs().format('MMMM D, YYYY')}`, blocks, channelId);
-    // } catch (e) {
-    //   console.log(e);
-    // }
+    try {
+      await sendMessage(`🌅 Good Morning ${dayjs().format('MMMM D, YYYY')}`, blocks, channelId);
+    } catch (e) {
+      console.log(e);
+    }
   });
 }
 
